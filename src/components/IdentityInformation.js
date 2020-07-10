@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
-export default class IdentityInformation extends Component {
+class IdentityInformation extends Component {
     constructor(props) {
         super(props);
 
@@ -88,3 +89,13 @@ export default class IdentityInformation extends Component {
         );
     }
 }
+
+IdentityInformation.propTypes = {
+    name: PropTypes.string,
+    email: PropTypes.string,
+    phone: PropTypes.string,
+    isEditing: PropTypes.bool,
+    updateIdentityInformation: PropTypes.func,
+};
+
+export default IdentityInformation;

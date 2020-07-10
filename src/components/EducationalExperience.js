@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import EducationalExperienceItem from './EducationalExperienceItem';
-import { format } from 'date-fns';
+import PropTypes from 'prop-types';
 
-export default class EducationalExperience extends Component {
+class EducationalExperience extends Component {
     constructor(props) {
         super(props);
 
@@ -30,8 +30,8 @@ export default class EducationalExperience extends Component {
             items: this.state.items.concat({
                 schoolName: '',
                 studyTitle: '',
-                startDate: format(new Date(), 'yyyy/MM/dd'),
-                endDate: format(new Date(), 'yyyy/MM/dd'),
+                startDate: new Date(),
+                endDate: new Date(),
             }),
         });
     }
@@ -78,3 +78,11 @@ export default class EducationalExperience extends Component {
         );
     }
 }
+
+EducationalExperience.propTypes = {
+    educationalExperienceItems: PropTypes.array,
+    isEditing: PropTypes.bool,
+    updateEducationInformation: PropTypes.func,
+};
+
+export default EducationalExperience;

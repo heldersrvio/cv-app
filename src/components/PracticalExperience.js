@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import PracticalExperienceItem from './PracticalExperienceItem';
-import { format } from 'date-fns';
+import PropTypes from 'prop-types';
 
-export default class PracticalExperience extends Component {
+class PracticalExperience extends Component {
     constructor(props) {
         super(props);
 
@@ -31,8 +31,8 @@ export default class PracticalExperience extends Component {
                 companyName: '',
                 positionTitle: '',
                 mainTasks: '',
-                startDate: format(new Date(), 'yyyy/MM/dd'),
-                endDate: format(new Date(), 'yyyy/MM/dd'),
+                startDate: new Date(),
+                endDate: new Date(),
             }),
         });
     }
@@ -80,3 +80,11 @@ export default class PracticalExperience extends Component {
         );
     }
 }
+
+PracticalExperience.propTypes = {
+    practicalExperienceItems: PropTypes.array,
+    isEditing: PropTypes.bool,
+    updateWorkInformation: PropTypes.func,
+};
+
+export default PracticalExperience;

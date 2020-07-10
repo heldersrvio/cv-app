@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
+import PropTypes from 'prop-types';
+import { format, parse } from 'date-fns';
 
-export default class PracticalExperienceItem extends Component {
+class PracticalExperienceItem extends Component {
     constructor(props) {
         super(props);
 
@@ -8,8 +10,8 @@ export default class PracticalExperienceItem extends Component {
             companyNameInputValue: props.companyName,
             positionTitleInputValue: props.positionTitle,
             mainTasksInputValue: props.mainTasks,
-            startDateInputValue: props.startDate,
-            endDateInputValue: props.endDate,
+            startDateInputValue: format(props.startDate, 'yyyy/MM/dd'),
+            endDateInputValue: format(props.endDate, 'yyyy/MM/dd'),
         }
         this.updateCompanyNameInputValue = this.updateCompanyNameInputValue.bind(this);
         this.updatePositionTitleInputValue = this.updatePositionTitleInputValue.bind(this);
@@ -54,8 +56,8 @@ export default class PracticalExperienceItem extends Component {
                 companyName: this.state.companyNameInputValue,
                 positionTitle: this.state.positionTitleInputValue,
                 mainTasks: this.state.mainTasksInputValue,
-                startDate: this.state.startDateInputValue,
-                endDate: this.state.endDateInputValue,
+                startDate: parse(this.state.startDateInputValue, 'yyyy/MM/dd', new Date()),
+                endDate: parse(this.state.endDateInputValue, 'yyyy/MM/dd', new Date()),
             }, this.props.index);
         }
     }
@@ -91,7 +93,7 @@ export default class PracticalExperienceItem extends Component {
                 id= {`start-date-${this.props.index}`}
                 onChange= {this.updateStartDateInputValue}
             ></input>
-        : <p id= {`start-date-${this.props.index}`}>{this.props.startDate}</p>;
+        : <p id= {`start-date-${this.props.index}`}>{format(this.props.startDate, 'yyyy/MM/dd')}</p>;
 
         const endDateField = (this.props.isEditing)
             ? <input
@@ -99,7 +101,7 @@ export default class PracticalExperienceItem extends Component {
                 id= {`end-date-${this.props.index}`}
                 onChange= {this.updateEndDateInputValue}
             ></input>
-        : <p id= {`end-date-${this.props.index}`}>{this.props.endDate}</p>;
+        : <p id= {`end-date-${this.props.index}`}>{format(this.props.endDate, 'yyyy/MM/dd')}</p>;
 
         const deleteButton = (this.props.isEditing)
             ? <button
@@ -125,3 +127,18 @@ export default class PracticalExperienceItem extends Component {
         );
     }
 }
+
+PracticalExperienceItem.propTypes = {
+    key: PropTypes.number,
+    index: PropTypes.number,
+    companyName: PropTypes.string,
+    positionTitle: PropTypes.string,
+    mainTaks: PropTypes.string,
+    startDate: PropTypes.instanceOf(Date),
+    endDate: PropTypes.instanceOf(Date),
+    deleteItem: PropTypes.func,
+    updateItem: PropTypes.func,
+    isEditing: PropTypes.bool, 
+};
+
+export default PracticalExperienceItem;
