@@ -1,17 +1,17 @@
 import React, { Component } from 'react';
-import EducationalExperienceItem from './EducationalExperienceItem';
+import PracticalExperienceItem from './PracticalExperienceItem';
 import { format } from 'date-fns';
 
-export default class EducationalExperience extends Component {
+export default class PracticalExperience extends Component {
     constructor(props) {
         super(props);
 
         this.state = {
-            items: props.educationalExperienceItems,
+            items: props.practicalExperienceItems,
         };
+        this.updateItem = this.updateItem.bind(this);
         this.addNewItem = this.addNewItem.bind(this);
         this.deleteItem = this.deleteItem.bind(this);
-        this.updateItem = this.updateItem.bind(this);
     }
 
     updateItem(item, index) {
@@ -28,8 +28,9 @@ export default class EducationalExperience extends Component {
     addNewItem() {
         this.setState({
             items: this.state.items.concat({
-                schoolName: '',
-                studyTitle: '',
+                companyName: '',
+                positionTitle: '',
+                mainTasks: '',
                 startDate: format(new Date(), 'yyyy/MM/dd'),
                 endDate: format(new Date(), 'yyyy/MM/dd'),
             }),
@@ -44,21 +45,22 @@ export default class EducationalExperience extends Component {
 
     componentDidUpdate(previousProps, previousState) {
         if (previousProps.isEditing && !this.props.isEditing) {
-            this.props.updateEducationInformation(
-                previousState.educationalExperienceItems,
+            this.props.updateWorkInformation(
+                previousState.practicalExperienceItems,
             );
         }
     }
 
     render() {
-        const educationalExperienceItems = this.state.items
+        const practicalExperienceItems = this.state.items
             .map(
                 (item, index) => {
-                    return (<EducationalExperienceItem
+                    return (<PracticalExperienceItem
                         key= {index}
                         index= {index}
-                        schoolName = {item.schoolName}
-                        studyTitle= {item.studyTitle}
+                        companyName = {item.companyName}
+                        positionTitle= {item.positionTitle}
+                        mainTasks= {item.mainTasks}
                         startDate= {item.startDate}
                         endDate= {item.endDate}
                         deleteItem= {this.deleteItem}
@@ -67,12 +69,12 @@ export default class EducationalExperience extends Component {
                     );
                 }
             );
-            const addItemButton = (this.props.isEditing) ? <button id= "add-educational-item-button" onClick= {this.addNewItem}>New</button> : null;
+            const addItemButton = (this.props.isEditing) ? <button id= "add-practical-item-button" onClick= {this.addNewItem}>New</button> : null;
         
         return (
-            <div className= "education">
-                <h2>Education</h2>
-                {educationalExperienceItems}
+            <div className= "work">
+                <h2>Work Experience</h2>
+                {practicalExperienceItems}
                 {addItemButton}
             </div>
         );

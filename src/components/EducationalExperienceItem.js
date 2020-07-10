@@ -10,6 +10,10 @@ export default class EducationalExperienceItem extends Component {
             startDateInputValue: props.startDate,
             endDateInputValue: props.endDate,
         }
+        this.updateSchoolNameInputValue = this.updateSchoolNameInputValue.bind(this);
+        this.updateStudyTitleInputValue = this.updateStudyTitleInputValue.bind(this);
+        this.updateStartDateInputValue = this.updateStartDateInputValue.bind(this);
+        this.updateEndDateInputValue = this.updateEndDateInputValue.bind(this);
     }
 
     updateSchoolNameInputValue(e) {
@@ -36,12 +40,23 @@ export default class EducationalExperienceItem extends Component {
         });
     }
 
+    componentDidUpdate(previousProps, previousState) {
+        if (previousState !== this.state) {
+            this.props.updateItem({
+                schoolName: this.state.schoolNameInputValue,
+                studyTitle: this.state.studyTitleInputValue,
+                startDate: this.state.startDateInputValue,
+                endDate: this.state.endDateInputValue,
+            }, this.props.index);
+        }
+    }
+
     render() {
         const schoolNameField = (this.props.isEditing)
             ? <input
                 value= {this.state.schoolNameInputValue}
                 id= {`school-name-${this.props.index}`}
-                onChange= {this.updateSchoolNameInputValue.bind(this)}
+                onChange= {this.updateSchoolNameInputValue}
             ></input>
         : <p id= {`school-name-${this.props.index}`}>{this.props.schoolName}</p>;
 
@@ -49,7 +64,7 @@ export default class EducationalExperienceItem extends Component {
             ? <input
                 value= {this.state.studyTitleInputValue}
                 id= {`study-title-${this.props.index}`}
-                onChange= {this.updateStudyTitleInputValue.bind(this)}
+                onChange= {this.updateStudyTitleInputValue}
             ></input>
         : <p id= {`study-title-${this.props.index}`}>{this.props.studyTitle}</p>;
 
@@ -57,7 +72,7 @@ export default class EducationalExperienceItem extends Component {
             ? <input
                 value= {this.state.startDateInputValue}
                 id= {`start-date-${this.props.index}`}
-                onChange= {this.updateStartDateInputValue.bind(this)}
+                onChange= {this.updateStartDateInputValue}
             ></input>
         : <p id= {`start-date-${this.props.index}`}>{this.props.startDate}</p>;
 
@@ -65,14 +80,14 @@ export default class EducationalExperienceItem extends Component {
             ? <input
                 value= {this.state.endDateInputValue}
                 id= {`end-date-${this.props.index}`}
-                onChange= {this.updateEndDateInputValue.bind(this)}
+                onChange= {this.updateEndDateInputValue}
             ></input>
         : <p id= {`end-date-${this.props.index}`}>{this.props.endDate}</p>;
 
         const deleteButton = (this.props.isEditing)
             ? <button
                 className= "delete-educational-experience-item"
-                onClick= {this.props.deleteItem}>Delete
+                onClick= {() => this.props.deleteItem(this.props.index)}>Delete
             </button>
             : null;
 

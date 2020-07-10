@@ -9,6 +9,9 @@ export default class IdentityInformation extends Component {
             emailInputValue: props.email,
             phoneInputValue: props.phone,
         };
+        this.updateNameInputValue = this.updateNameInputValue.bind(this);
+        this.updateEmailInputValue = this.updateEmailInputValue.bind(this);
+        this.updatePhoneInputValue = this.updatePhoneInputValue.bind(this);
     }
 
     updateNameInputValue(e) {
@@ -29,14 +32,25 @@ export default class IdentityInformation extends Component {
         });
     }
 
+    componentDidUpdate(previousProps, previousState) {
+        if (previousProps.isEditing && !this.props.isEditing) {
+            this.props.updateIdentityInformation(
+                previousState.nameInputValue,
+                previousState.emailInputValue,
+                previousState.phoneInputValue,
+            );
+        }
+    }
+
     render() {
+
         const nameField = (this.props.isEditing)
             ? <input
                 type= "text"
                 id= "name"
                 maxLength= "45"
                 value= {this.state.nameInputValue}
-                onChange= {this.updateNameInputValue.bind(this)}
+                onChange= {this.updateNameInputValue}
             ></input>
             : <p>{this.props.name}</p>;
 
@@ -47,7 +61,7 @@ export default class IdentityInformation extends Component {
                 minLength= "6"
                 maxLength= "20"
                 value= {this.state.emailInputValue}
-                onChange= {this.updateEmailInputValue.bind(this)}
+                onChange= {this.updateEmailInputValue}
             ></input>
             : <p>{this.props.email}</p>;
 
@@ -58,7 +72,7 @@ export default class IdentityInformation extends Component {
                 minLength= "9"
                 maxLength= "15"
                 value= {this.state.phoneInputValue}
-                onChange= {this.updatePhoneInputValue.bind(this)}
+                onChange= {this.updatePhoneInputValue}
             ></input>
             : <p>{this.props.phone}</p>;
         
