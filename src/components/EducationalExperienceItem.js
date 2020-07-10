@@ -69,6 +69,13 @@ export default class EducationalExperienceItem extends Component {
             ></input>
         : <p id= {`end-date-${this.props.index}`}>{this.props.endDate}</p>;
 
+        const deleteButton = (this.props.isEditing)
+            ? <button
+                className= "delete-educational-experience-item"
+                onClick= {this.props.deleteItem}>Delete
+            </button>
+            : null;
+
         return (
             <div className= "educational-experience-item" key= {this.props.index}>
                 <label htmlFor= {`school-name-${this.props.index}`}>School: </label>
@@ -79,7 +86,7 @@ export default class EducationalExperienceItem extends Component {
                 {startDateField}
                 <label htmlFor= {`end-date-${this.props.index}`}>Until: </label>
                 {endDateField}
-                <button className= "delete-educational-experience-item" onClick= {this.props.deleteItem}>Delete</button>
+                {deleteButton}
             </div>
         );
     }
