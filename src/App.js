@@ -58,15 +58,17 @@ class App extends Component {
 
   render () {
     const button = (this.state.isEditing)
-      ? <button id= "submit-CV-button" onClick= {this.updateCVInformation}>Submit</button>
+      ? <button id= "submit-CV-button" type= "submit" onClick= {this.updateCVInformation}>Submit</button>
       : <button id= "edit-CV-button" onClick = {this.editCV}>Edit</button>;
 
     return (
       <div className="App">
-        <IdentityInformation name= {this.state.name} email= {this.state.email} phone= {this.state.phone} isEditing= {this.state.isEditing} updateIdentityInformation= {this.updateIdentityInformation}/>
-        <EducationalExperience educationalExperienceItems= {this.state.educationalExperienceItems} isEditing = {this.state.isEditing} updateEducationInformation = {this.updateEducationInformation}/>
-        <PracticalExperience practicalExperienceItems= {this.state.practicalExperienceItems} isEditing = {this.state.isEditing} updateWorkInformation = {this.updateWorkInformation}/>
-        {button}
+        <form onSubmit= {(e) => e.preventDefault()}>
+          <IdentityInformation name= {this.state.name} email= {this.state.email} phone= {this.state.phone} isEditing= {this.state.isEditing} updateIdentityInformation= {this.updateIdentityInformation}/>
+          <EducationalExperience educationalExperienceItems= {this.state.educationalExperienceItems} isEditing = {this.state.isEditing} updateEducationInformation = {this.updateEducationInformation}/>
+          <PracticalExperience practicalExperienceItems= {this.state.practicalExperienceItems} isEditing = {this.state.isEditing} updateWorkInformation = {this.updateWorkInformation}/>
+          {button}
+        </form>
       </div>
     );
   }

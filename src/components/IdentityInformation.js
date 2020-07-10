@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import './IdentityInformation.css';
 
 class IdentityInformation extends Component {
     constructor(props) {
@@ -49,22 +50,23 @@ class IdentityInformation extends Component {
             ? <input
                 type= "text"
                 id= "name"
+                placeholder= "Name"
                 maxLength= "45"
                 value= {this.state.nameInputValue}
                 onChange= {this.updateNameInputValue}
             ></input>
-            : <p>{this.props.name}</p>;
+            : <p id= "name">{this.props.name}</p>;
 
         const emailField = (this.props.isEditing)
             ? <input
                 type= "email"
                 id= "email"
                 minLength= "6"
-                maxLength= "20"
+                maxLength= "40"
                 value= {this.state.emailInputValue}
                 onChange= {this.updateEmailInputValue}
             ></input>
-            : <p>{this.props.email}</p>;
+            : <p id= "email">{this.props.email}</p>;
 
         const phoneField = (this.props.isEditing)
             ? <input
@@ -75,16 +77,17 @@ class IdentityInformation extends Component {
                 value= {this.state.phoneInputValue}
                 onChange= {this.updatePhoneInputValue}
             ></input>
-            : <p>{this.props.phone}</p>;
+            : <p id= "phone">{this.props.phone}</p>;
         
         return (
             <div id= "identity-information">
-                <label htmlFor= "name">Name: </label>
                 {nameField}
-                <label htmlFor= "email">Email: </label>
-                {emailField}
-                <label htmlFor= "phone">Phone: </label>
-                {phoneField}
+                <div id= 'contact-info'>
+                    <label htmlFor= "email">Email: </label>
+                    {emailField}
+                    <label htmlFor= "phone">Phone: </label>
+                    {phoneField}
+                </div>
             </div>
         );
     }
