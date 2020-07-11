@@ -2,6 +2,7 @@
 
 .education {
     margin-left: 30px;
+    margin-right: 30px;
     font-family: 'Ubuntu';
     font-size: 15px;
 }
@@ -22,9 +23,11 @@ label {
 }
 
 .date-container {
-    float: right;
+    position: absolute;
+    top: 5px;
+    right: 5px;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
 }
 
 .date-container h2 {
@@ -44,16 +47,16 @@ label {
 
 .educational-experience-item {
     position: relative;
-    height: 120px;
+    max-height: 120px;
     margin-top: 30px;
     padding: 10px;
     border: 1pt solid gray;
 }
 
 .school-and-study {
-    position: absolute;
     display: flex;
-    top: 30%;
+    margin-top: 50px;
+    margin-bottom: 20px;
 }
 
 .school-and-study label {
@@ -64,13 +67,23 @@ label {
     margin-right: 20px;
 }
 
-.educational-experience-item button {
-    position: absolute;
-    bottom: 10%;
-}
-
 #add-educational-item-button {
     margin-top: 10px;
+}
+
+button {
+    cursor: pointer;
+    width: 45px;
+    height: 23px;
+    font-size: 10px;
+    border: 1pt solid black;
+    color: white;
+    font-weight: bold;
+    background-color: grey;
+}
+
+button:hover {
+    box-shadow: 0px 0px 10px grey;
 }
 
 .invalid-date {

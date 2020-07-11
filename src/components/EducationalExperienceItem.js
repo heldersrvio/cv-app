@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import { format, parse } from 'date-fns';
-import './EducationalExperience.css';
 
 class EducationalExperienceItem extends Component {
     constructor(props) {

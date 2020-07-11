@@ -2,6 +2,7 @@
 
 .work {
     margin-left: 30px;
+    margin-right: 30px;
     font-family: 'Ubuntu';
     font-size: 15px;
 }
@@ -22,9 +23,11 @@ label {
 }
 
 .date-container {
-    float: right;
+    position: absolute;
+    top: 5px;
+    right: 5px;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
 }
 
 .date-container h2 {
@@ -44,16 +47,17 @@ label {
 
 .practical-experience-item {
     position: relative;
-    height: 200px;
+    max-height: 200px;
     margin-top: 30px;
     padding: 10px;
     border: 1pt solid gray;
+    
 }
 
 .non-date {
-    position: absolute;
     display: flex;
-    top: 30%;
+    margin-top: 50px;
+    margin-bottom: 20px;
 }
 
 .non-date label {
@@ -64,10 +68,6 @@ label {
     margin-right: 20px;
 }
 
-.practical-experience-item button {
-    position: absolute;
-    bottom: 10%;
-}
 
 #add-practical-item-button {
     margin-top: 10px;
