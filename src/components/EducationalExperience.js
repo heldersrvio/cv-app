@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import EducationalExperienceItem from './EducationalExperienceItem';
 import PropTypes from 'prop-types';
+import './EducationalExperience.css';
 
 class EducationalExperience extends Component {
     constructor(props) {

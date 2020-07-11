@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PracticalExperienceItem from './PracticalExperienceItem';
 import PropTypes from 'prop-types';
+import './PracticalExperience.css';
 
 class PracticalExperience extends Component {
     constructor(props) {

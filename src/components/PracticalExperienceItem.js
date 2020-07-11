@@ -96,7 +96,7 @@ class PracticalExperienceItem extends Component {
                 className= 'company-name'
                 onChange= {this.updateCompanyNameInputValue}
             ></input>
-        : <p id= {`company-name-${this.props.index}`}>{this.props.companyName}</p>;
+        : <span id= {`company-name-${this.props.index}`}>{this.props.companyName}</span>;
 
         const positionTitleField = (this.props.isEditing)
             ? <input
@@ -105,7 +105,7 @@ class PracticalExperienceItem extends Component {
                 className= 'position-title'
                 onChange= {this.updatePositionTitleInputValue}
             ></input>
-        : <p id= {`position-title-${this.props.index}`}>{this.props.positionTitle}</p>;
+        : <span id= {`position-title-${this.props.index}`}>{this.props.positionTitle}</span>;
 
         const mainTasksField = (this.props.isEditing)
             ? <input
@@ -114,7 +114,7 @@ class PracticalExperienceItem extends Component {
                 className = 'main-tasks'
                 onChange= {this.updateMainTasksInputValue}
             ></input>
-        : <p id= {`main-tasks-${this.props.index}`}>{this.props.mainTasks}</p>;
+        : <span id= {`main-tasks-${this.props.index}`}>{this.props.mainTasks}</span>;
 
         const startDateClasses = (this.state.startDateInvalid)
             ? 'date invalid-date'
@@ -130,7 +130,7 @@ class PracticalExperienceItem extends Component {
                 className={startDateClasses}
                 onChange= {this.updateStartDateInputValue}
             ></input>
-        : <p id= {`start-date-${this.props.index}`}>{format(this.props.startDate, 'yyyy/MM/dd')}</p>;
+        : <span id= {`start-date-${this.props.index}`}>{format(this.props.startDate, 'yyyy/MM/dd')}</span>;
 
         const endDateField = (this.props.isEditing)
             ? <input
@@ -139,7 +139,7 @@ class PracticalExperienceItem extends Component {
                 className= {endDateClasses}
                 onChange= {this.updateEndDateInputValue}
             ></input>
-        : <p id= {`end-date-${this.props.index}`}>{format(this.props.endDate, 'yyyy/MM/dd')}</p>;
+        : <span id= {`end-date-${this.props.index}`}>{format(this.props.endDate, 'yyyy/MM/dd')}</span>;
 
         const deleteButton = (this.props.isEditing)
             ? <button
@@ -157,21 +157,31 @@ class PracticalExperienceItem extends Component {
             : <span></span>;
         return (
             <div className= "practical-experience-item" key= {this.props.index}>
-                <label htmlFor= {`company-name-${this.props.index}`}>Company: </label>
-                {companyNameField}
-                <label htmlFor= {`position-title-${this.props.index}`}>Position: </label>
-                {positionTitleField}
-                <label htmlFor= {`main-tasks-${this.props.index}`}>Main tasks: </label>
-                {mainTasksField}
-                <div className= "start-date-container">
-                    <label htmlFor= {`start-date-${this.props.index}`}>From: </label>
-                    {startDateField}
-                    {startDateInvalidAlert}
+                <div className= "non-date">
+                    <div className= "company">
+                        <label htmlFor= {`company-name-${this.props.index}`}>Company: </label>
+                        {companyNameField}
+                    </div>
+                    <div className= "position">
+                        <label htmlFor= {`position-title-${this.props.index}`}>Position: </label>
+                        {positionTitleField}
+                    </div>
+                    <div className= "tasks">
+                        <label htmlFor= {`main-tasks-${this.props.index}`}>Main tasks: </label>
+                        {mainTasksField}
+                    </div>
                 </div>
-                <div className = "end-date-container">
-                    <label htmlFor= {`end-date-${this.props.index}`}>Until: </label>
-                    {endDateField}
-                    {endDateInvalidAlert}
+                <div className= "date-container">
+                    <div className= "start-date-container">
+                        <label htmlFor= {`start-date-${this.props.index}`}>From: </label>
+                        {startDateField}
+                        {startDateInvalidAlert}
+                    </div>
+                    <div className = "end-date-container">
+                        <label htmlFor= {`end-date-${this.props.index}`}>Until: </label>
+                        {endDateField}
+                        {endDateInvalidAlert}
+                    </div>
                 </div>
                 {deleteButton}
             </div>

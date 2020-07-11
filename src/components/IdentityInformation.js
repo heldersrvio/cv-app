@@ -55,7 +55,7 @@ class IdentityInformation extends Component {
                 value= {this.state.nameInputValue}
                 onChange= {this.updateNameInputValue}
             ></input>
-            : <p id= "name">{this.props.name}</p>;
+            : <span id= "name">{this.props.name}</span>;
 
         const emailField = (this.props.isEditing)
             ? <input
@@ -66,7 +66,7 @@ class IdentityInformation extends Component {
                 value= {this.state.emailInputValue}
                 onChange= {this.updateEmailInputValue}
             ></input>
-            : <p id= "email">{this.props.email}</p>;
+            : <span id= "email">{this.props.email}</span>;
 
         const phoneField = (this.props.isEditing)
             ? <input
@@ -77,7 +77,7 @@ class IdentityInformation extends Component {
                 value= {this.state.phoneInputValue}
                 onChange= {this.updatePhoneInputValue}
             ></input>
-            : <p id= "phone">{this.props.phone}</p>;
+            : <span id= "phone">{this.props.phone}</span>;
         
         return (
             <div id= "identity-information">

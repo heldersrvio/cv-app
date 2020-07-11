@@ -1,0 +1,86 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500;700&display=swap');
+
+.education {
+    margin-left: 30px;
+    font-family: 'Ubuntu';
+    font-size: 15px;
+}
+
+input {
+    font-family: 'Ubuntu';
+    font-size: 15px;
+}
+
+label {
+    font-weight: 500;
+    display: inline-block;
+    text-align: right;
+}
+
+.education input {
+    margin-right: 20px;
+}
+
+.date-container {
+    float: right;
+    display: flex;
+    flex-direction: column;
+}
+
+.date-container h2 {
+    margin-bottom: 50px;
+}
+
+.date-container label {
+    font-size: 10px;
+    margin-right: 5px;
+}
+
+.date-container input, .date-container span {
+    width: 70px;
+    height: 10px;
+    font-size: 10px;
+}
+
+.educational-experience-item {
+    position: relative;
+    height: 120px;
+    margin-top: 30px;
+    padding: 10px;
+    border: 1pt solid gray;
+}
+
+.school-and-study {
+    position: absolute;
+    display: flex;
+    top: 30%;
+}
+
+.school-and-study label {
+    margin-right: 10px;
+}
+
+.school, .study {
+    margin-right: 20px;
+}
+
+.educational-experience-item button {
+    position: absolute;
+    bottom: 10%;
+}
+
+#add-educational-item-button {
+    margin-top: 10px;
+}
+
+.invalid-date {
+    border: 1pt solid red;
+}
+
+.end-date-container, .start-date-container {
+    width: 100px;
+}
+
+.date-alert {
+    color: red;
+}

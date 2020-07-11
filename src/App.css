@@ -1,4 +1,24 @@
+html {
+    height: 100%;
+    width: 100%;
+}
+
 body {
     margin-left: 15%;
     margin-right: 15%;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-top: 0px;
+    min-height: 100%;
+    border-right: 1pt solid rgb(182, 182, 182);
+    border-left: 1pt solid rgb(182, 182, 182);
+    border-top: 1pt solid rgb(182, 182, 182);
+}
+
+.identity {
+    margin-bottom: 50px;
+}
+
+.education {
+    margin-bottom: 50px;
 }

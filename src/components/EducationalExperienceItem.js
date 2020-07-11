@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import { format, parse } from 'date-fns';
+import './EducationalExperience.css';
 
 class EducationalExperienceItem extends Component {
     constructor(props) {
@@ -87,7 +88,7 @@ class EducationalExperienceItem extends Component {
                 className= 'school-name'
                 onChange= {this.updateSchoolNameInputValue}
             ></input>
-        : <p id= {`school-name-${this.props.index}`}>{this.props.schoolName}</p>;
+        : <span id= {`school-name-${this.props.index}`}>{this.props.schoolName}</span>;
 
         const studyTitleField = (this.props.isEditing)
             ? <input
@@ -96,7 +97,7 @@ class EducationalExperienceItem extends Component {
                 className= 'study-title'
                 onChange= {this.updateStudyTitleInputValue}
             ></input>
-        : <p id= {`study-title-${this.props.index}`}>{this.props.studyTitle}</p>;
+        : <span id= {`study-title-${this.props.index}`}>{this.props.studyTitle}</span>;
 
         const startDateClasses = (this.state.startDateInvalid)
             ? 'date invalid-date'
@@ -112,7 +113,7 @@ class EducationalExperienceItem extends Component {
                 className= {startDateClasses}
                 onChange= {this.updateStartDateInputValue}
             ></input>
-        : <p id= {`start-date-${this.props.index}`}>{format(this.props.startDate, 'yyyy/MM/dd')}</p>;
+        : <span id= {`start-date-${this.props.index}`}>{format(this.props.startDate, 'yyyy/MM/dd')}</span>;
 
         const endDateField = (this.props.isEditing)
             ? <input
@@ -121,7 +122,7 @@ class EducationalExperienceItem extends Component {
                 className = {endDateClasses}
                 onChange= {this.updateEndDateInputValue}
             ></input>
-        : <p id= {`end-date-${this.props.index}`}>{format(this.props.endDate, 'yyyy/MM/dd')}</p>;
+        : <span id= {`end-date-${this.props.index}`}>{format(this.props.endDate, 'yyyy/MM/dd')}</span>;
 
         const deleteButton = (this.props.isEditing)
             ? <button
@@ -131,28 +132,36 @@ class EducationalExperienceItem extends Component {
             : null;
 
         const startDateInvalidAlert = (this.state.startDateInvalid && this.props.isEditing)
-            ? <span>Invalid date</span>
+            ? <span className= "date-alert">Invalid date</span>
             : <span></span>;
         
         const endDateInvalidAlert = (this.state.endDateInvalid && this.props.isEditing)
-            ? <span>Invalid date</span>
+            ? <span className= "date-alert">Invalid date</span>
             : <span></span>;
 
         return (
             <div className= "educational-experience-item" key= {this.props.index}>
-                <label htmlFor= {`school-name-${this.props.index}`}>School: </label>
-                {schoolNameField}
-                <label htmlFor= {`study-title-${this.props.index}`}>Title of study: </label>
-                {studyTitleField}
-                <div className= "start-date-container">
-                    <label htmlFor= {`start-date-${this.props.index}`}>From: </label>
-                    {startDateField}
-                    {startDateInvalidAlert}
+                <div className= "school-and-study">
+                    <div className= "school">
+                        <label htmlFor= {`school-name-${this.props.index}`}>School: </label>
+                        {schoolNameField}
+                    </div>
+                    <div className= "study">
+                        <label htmlFor= {`study-title-${this.props.index}`}>Title of study: </label>
+                        {studyTitleField}
+                    </div>
                 </div>
-                <div className = "end-date-container">
-                    <label htmlFor= {`end-date-${this.props.index}`}>Until: </label>
-                    {endDateField}
-                    {endDateInvalidAlert}
+                <div className= "date-container">
+                    <div className= "start-date-container">
+                        <label htmlFor= {`start-date-${this.props.index}`}>From: </label>
+                        {startDateField}
+                        {startDateInvalidAlert}
+                    </div>
+                    <div className = "end-date-container">
+                        <label htmlFor= {`end-date-${this.props.index}`}>Until: </label>
+                        {endDateField}
+                        {endDateInvalidAlert}
+                    </div>
                 </div>
                 {deleteButton}
             </div>
